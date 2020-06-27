@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Timer Qt
+StartupWMClass=timerqt
+TryExec=timerqt
+Exec=timerqt
+Terminal=false
+Icon=timerqt
+Type=Application
+Categories=Accessories;
+Name[en_US]=Timer Qt

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="timerqt">res/timerqt.svg</file>
+        <file alias="run">res/run.svg</file>
+        <file alias="delete">res/delete.svg</file>
+    </qresource>
+</RCC>
