@@ -7,11 +7,6 @@ TimerWidget::TimerWidget(QString id, QString name, QString cmd, int min, int sec
     timer->setInterval(1000);
 
     timerId = id;
-    auto vbox = new QVBoxLayout(this);
-    auto row1 = new QHBoxLayout();
-    auto row2 = new QHBoxLayout();
-    vbox->addLayout(row1);
-    vbox->addLayout(row2);
     nameEdit = new QLineEdit(name);
     cmdEdit = new QLineEdit(cmd);
     minSpin = new QSpinBox();
@@ -33,16 +28,22 @@ TimerWidget::TimerWidget(QString id, QString name, QString cmd, int min, int sec
     runBtn = new QPushButton(QIcon(":/run"), "Run (0)");
     delBtn = new QPushButton(QIcon(":/delete"), "Delete");
 
-    row1->addWidget(nameEdit, 1);
-    row1->addWidget(cmdEdit, 4);
-    row1->addWidget(runBtn, 1);
+    auto grid = new QGridLayout();
+    grid->addWidget(nameEdit, 0, 0, 1, 1);
+    grid->addWidget(cmdEdit, 0, 1, 1, 4);
+    grid->addWidget(runBtn, 0, 5, 1, 1);
 
-    row2->addWidget(delBtn, 1);
-    row2->addWidget(minSpin, 1);
-    row2->addWidget(secSpin, 1);
-    row2->addWidget(idleCheck,1);
-    row2->addWidget(repeatCheck, 1);
-    row2->addWidget(enabledCheck, 1);
+    grid->addWidget(delBtn, 1, 0, 1, 1);
+    grid->addWidget(minSpin, 1, 1, 1, 1);
+    grid->addWidget(secSpin, 1, 2, 1, 1);
+    grid->addWidget(idleCheck, 1, 3, 1, 1);
+    grid->addWidget(repeatCheck, 1, 4, 1, 1);
+    grid->addWidget(enabledCheck, 1, 5, 1, 1);
+
+    for (int i = 0; i < 6 ; ++i ) {
+        grid->setColumnStretch(i, 1);
+    }
+    setLayout(grid);
 
     if(enabled)
         start();

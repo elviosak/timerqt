@@ -1,7 +1,7 @@
 #ifndef TIMERWIDGET_H
 #define TIMERWIDGET_H
 
-#include <QHBoxLayout>
+#include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
