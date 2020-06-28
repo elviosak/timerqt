@@ -1,4 +1,4 @@
-QT += core gui widgets x11extras
+QT += core gui widgets
 QT += KIdleTime
 
 CONFIG += c++11

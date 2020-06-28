@@ -6,7 +6,7 @@ A simple Qt app to run commands on a timer.
 ### Install from source:
 
 - #### Install dependencies:
-Debian/Ubuntu: `sudo apt install -y git build-essential qt5-default libkf5windowsystem5`
+Debian/Ubuntu: `sudo apt install -y git build-essential qt5-default libkf5idletime-dev`
 
 - #### Clone repo and run install script:
 ```

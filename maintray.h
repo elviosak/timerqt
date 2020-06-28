@@ -20,7 +20,6 @@
 #include <QSystemTrayIcon>
 #include <QUuid>
 #include <QVBoxLayout>
-#include <QX11Info>
 
 #include "timerwidget.h"
 class MainTray : public QSystemTrayIcon
