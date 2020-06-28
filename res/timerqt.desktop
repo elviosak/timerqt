@@ -6,5 +6,5 @@ Exec=timerqt
 Terminal=false
 Icon=timerqt
 Type=Application
-Categories=Accessories;Utility;
+Categories=Utility;
 Name[en_US]=Timer Qt
