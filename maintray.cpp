@@ -20,6 +20,7 @@ MainTray::MainTray(QWidget *parent)
 void MainTray::createWindow(){
     win = new QMainWindow();
     win->setAttribute(Qt::WA_QuitOnClose, false);
+    win->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
     win->setWindowIcon(QIcon(":/timerqt"));
     win->setWindowTitle("Timer Qt");
     auto central = new QWidget();
@@ -90,7 +91,10 @@ void MainTray::updateMenu(){
         connect(a, &QAction::triggered, this, [=] { handleTray(QSystemTrayIcon::ActivationReason::Trigger); });
     }
     menu->addSeparator();
-    connect(a, &QAction::triggered, this, [=] { qDebug() << "action clicked"; });
+    a = menu->addAction("Show");
+    connect(a, &QAction::triggered, this, [=] { win->show(); win->activateWindow(); });
+    a = menu->addAction("Hide");
+    connect(a, &QAction::triggered, this, [=] { win->hide(); });
     a = menu->addAction(QIcon::fromTheme("exit"), "Quit");
     connect(a, &QAction::triggered, this, [=] { exit(0); });
 }
