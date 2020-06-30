@@ -69,10 +69,10 @@ TimerWidget::TimerWidget(QString id, QString name, QString cmd, int hour, int mi
         settings->setValue(timerId + "/cmd", cmd);
     });
     connect(hourSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int hour){
-        if (min == 0 && minSpin->value() == 0 && secSpin->value() == 0){
+        if (hour == 0 && minSpin->value() == 0 && secSpin->value() == 0){
             minSpin->setValue(1);
         }
-        totalTime = sec + min * 60 + hour * 60 * 60;
+        totalTime = secSpin->value() + minSpin->value() * 60 + hourSpin->value() * 60 * 60;
         settings->setValue(timerId + "/hour", hourSpin->value());
     });
     connect(minSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int min){
@@ -86,7 +86,7 @@ TimerWidget::TimerWidget(QString id, QString name, QString cmd, int hour, int mi
         if (sec == 0 && hourSpin->value() == 0 && minSpin->value() == 0 ){
             secSpin->setValue(1);
         }
-        totalTime = sec + min * 60 + hour * 60 * 60;
+        totalTime = secSpin->value() + minSpin->value() * 60 + hourSpin->value() * 60 * 60;
         settings->setValue(timerId + "/sec", secSpin->value());
     });
     connect(idleCheck, &QCheckBox::toggled, this, [=](bool idle){
