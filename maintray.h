@@ -3,8 +3,11 @@
 
 #include <QAction>
 #include <QCheckBox>
+#include <QComboBox>
 #include <QDebug>
 #include <QFormLayout>
+#include <QFrame>
+#include <QGridLayout>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -15,6 +18,9 @@
 #include <QMenu>
 #include <QPixmap>
 #include <QPushButton>
+#include <QRadioButton>
+#include <QScrollArea>
+#include <QScrollBar>
 #include <QSettings>
 #include <QSpinBox>
 #include <QSystemTrayIcon>
@@ -30,28 +36,36 @@ public:
     MainTray(QWidget *parent = nullptr);
     ~MainTray();
     void addTimer();
-    void addFromSettings(QString id, QString name, QString cmd, int min, int sec, bool idle, bool repeat, bool enabled);
-    void saveToSettings(QString id, QString name, QString cmd, int min, int sec, bool idle, bool repeat, bool enabled);
+    void addFromSettings(QString id, QString name, QString cmd, int hour, int min, int sec, bool idle, bool repeat, bool enabled);
+    void saveToSettings(QString id, QString name, QString cmd, int hour, int min, int sec, bool idle, bool repeat, bool enabled);
     void removeTimer(QString timerId);
     void createWindow();
     void handleTray(QSystemTrayIcon::ActivationReason reason);
     void updateMenu();
     void loadSettings();
-    QSettings * settings;
+    void updateTrayIcon(QString trayIcon);
+    void updateWinIcon(QString winIcon);
+    void fillIconCombo(QComboBox * combo);
 private:
     QMap<QString, TimerWidget*> mTimers;
+    QMap<QString, QIcon> icons;
     QMainWindow * win;
-    QMenu * menu;
+    QMenu * menu = new QMenu();
+    QSettings * settings = new QSettings("TimerQt", "timerqt");
+    QComboBox * winIconCombo;
+    QComboBox * trayIconCombo;
     QVBoxLayout * vbox;
     QVBoxLayout * timers;
-    QFormLayout * adder;
+    QGridLayout * adder;
     QLineEdit * addName;
     QLineEdit * addCmd;
+    QSpinBox * addHour;
     QSpinBox * addMin;
     QSpinBox * addSec;
     QCheckBox * addIdle;
     QCheckBox * addRepeat;
     QCheckBox * addEnabled;
+    QScrollArea * scroll;
 };
 
 #endif // MAINTRAY_H

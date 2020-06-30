@@ -3,5 +3,7 @@
         <file alias="timerqt">res/timerqt.svg</file>
         <file alias="run">res/run.svg</file>
         <file alias="delete">res/delete.svg</file>
+        <file alias="timerqt-dark">res/timerqt-dark.svg</file>
+        <file alias="timerqt-light">res/timerqt-light.svg</file>
     </qresource>
 </RCC>
