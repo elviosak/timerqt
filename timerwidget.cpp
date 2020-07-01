@@ -2,7 +2,6 @@
 
 TimerWidget::TimerWidget(QString id, QString name, QString cmd, int hour, int min, int sec, bool idle, bool repeat, bool enabled) : QFrame()
 {
-    settings = new QSettings("timerqt", "timers");
     setMinimumHeight(80);
     timer = new QTimer();
     timer->setInterval(1000);

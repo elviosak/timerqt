@@ -55,7 +55,7 @@ public:
     void remove();
     void showLog(int index);
     QStringList parseCmd(QString cmd);
-    QSettings * settings;
+    QSettings * settings = new QSettings("TimerQt", "timerqt");
     void updateSettings(QString key);
     QProcess * proc;
     void procFinished(int exitCode, QProcess::ExitStatus exitStatus);
