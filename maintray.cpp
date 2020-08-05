@@ -191,7 +191,7 @@ void MainTray::saveToSettings(QString id, QString name, QString cmd, int hour, i
     settings->beginGroup(id);
     settings->setValue("name", name);
     settings->setValue("cmd", cmd);
-    settings->setValue("min", hour);
+    settings->setValue("hour", hour);
     settings->setValue("min", min);
     settings->setValue("sec", sec);
     settings->setValue("idle", idle);
